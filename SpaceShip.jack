@@ -1,8 +1,22 @@
 class SpaceShip{
+
+    field int column;
+    field int row;
+    field int currentPosition;
+
+    constructor SpaceShip new(int startColumn, int startRow) {
+        let column = startColumn;
+        let row = startRow;
+        let currentPosition = (row * 32) + column;
+
+        do draw();
+        return this;
+    }
+
     
-    function void draw(int location) {
+    method void draw() {
         var int memAddress; 
-        let memAddress = 16384 + location;
+        let memAddress = 16384 + currentPosition;
 
         do Memory.poke(memAddress, -4096);
         do Memory.poke(memAddress + 32, -2048);
@@ -71,9 +85,9 @@ class SpaceShip{
         return;
     }
 
-    function void clear(int location) {
+    method void clear() {
         var int memAddress; 
-        let memAddress = 16384 + location;
+        let memAddress = 16384 + currentPosition;
 
         do Memory.poke(memAddress, 0);
         do Memory.poke(memAddress + 32, 0);
@@ -142,23 +156,24 @@ class SpaceShip{
         return;
     }
 
-    function void moveLeft(int location) {
-        do SpaceShip.clear(location);
-        let location = location - 1;
-
-        do SpaceShip.draw(location);
-        do Sys.wait(10);
-    return;
+    method void moveLeft() {
+        if (column > 0) {
+            do clear();
+            let column = column - 1;
+            let currentPosition = (row * 32) + column;
+            do draw();
+        }
+        return;
     }
 
-    function void moveRight(int location) {
-        do SpaceShip.clear(location);
-        let location = location + 1;
-
-        do SpaceShip.draw(location);
-        do Sys.wait(10);
-
-    return;
+    method void moveRight() {
+        if (column < 30) {
+            do clear();
+            let column = column + 1;
+            let currentPosition = (row * 32) + column;
+            do draw();
+        }
+        return;
     }
 
 }

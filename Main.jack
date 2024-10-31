@@ -1,39 +1,25 @@
 class Main {
 
     function void main() {
-        var int column;
-        var int row;
-        var int currentPosition;
+        var SpaceShip shipGame;
         var int key;
 
-        let column = 16;
-        let row = (32 * 225);
-        let currentPosition = row+column;
-
-        do SpaceShip.draw(currentPosition);
+        let shipGame = SpaceShip.new(15, 225);
 
         while (true) {
             let key = Memory.peek(24576);
 
-            // flecha izquierda
             if (key = 130) {
-                if(column>0){
-                    do SpaceShip.moveLeft(currentPosition);
-                    let currentPosition = currentPosition - 1;
-                    let column = column - 1;
-                    do Sys.wait(50);
-                }
+                do shipGame.moveLeft();
+                
+                while (Memory.peek(24576) = 130) {}
             }
-            // flecha derecha
+
             if (key = 132) {
-                if(column<30){
-                    do SpaceShip.moveRight(currentPosition);
-                    let currentPosition = currentPosition + 1;
-                    let column = column + 1;
-                    do Sys.wait(50);
-                }
+                do shipGame.moveRight();
+                
+                while (Memory.peek(24576) = 132) {}
             }
-            do Sys.wait(5);
         }
 
         return;
