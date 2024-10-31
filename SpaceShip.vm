@@ -819,6 +819,9 @@ pop this 2
 push pointer 0
 call SpaceShip.draw 1
 pop temp 0
+push constant 30
+call Sys.wait 1
+pop temp 0
 label IF_FALSE0
 push constant 0
 return
@@ -846,6 +849,9 @@ add
 pop this 2
 push pointer 0
 call SpaceShip.draw 1
+pop temp 0
+push constant 30
+call Sys.wait 1
 pop temp 0
 label IF_FALSE0
 push constant 0

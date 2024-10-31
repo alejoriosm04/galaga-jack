@@ -17,16 +17,18 @@ eq
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
+label WHILE_EXP1
+push local 1
+push constant 0
+eq
+not
+not
+if-goto WHILE_END1
+call Keyboard.keyPressed 0
+pop local 1
 push local 0
 call SpaceShip.moveLeft 1
 pop temp 0
-label WHILE_EXP1
-push constant 24576
-call Memory.peek 1
-push constant 130
-eq
-not
-if-goto WHILE_END1
 goto WHILE_EXP1
 label WHILE_END1
 label IF_FALSE0
@@ -36,16 +38,18 @@ eq
 if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
+label WHILE_EXP2
+push local 1
+push constant 0
+eq
+not
+not
+if-goto WHILE_END2
+call Keyboard.keyPressed 0
+pop local 1
 push local 0
 call SpaceShip.moveRight 1
 pop temp 0
-label WHILE_EXP2
-push constant 24576
-call Memory.peek 1
-push constant 132
-eq
-not
-if-goto WHILE_END2
 goto WHILE_EXP2
 label WHILE_END2
 label IF_FALSE1

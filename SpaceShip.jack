@@ -162,6 +162,7 @@ class SpaceShip{
             let column = column - 1;
             let currentPosition = (row * 32) + column;
             do draw();
+            do Sys.wait(30); 
         }
         return;
     }
@@ -172,6 +173,7 @@ class SpaceShip{
             let column = column + 1;
             let currentPosition = (row * 32) + column;
             do draw();
+            do Sys.wait(30);
         }
         return;
     }

@@ -2,7 +2,7 @@ class Main {
 
     function void main() {
         var SpaceShip shipGame;
-        var int key;
+        var char key;
 
         let shipGame = SpaceShip.new(15, 225);
 
@@ -10,15 +10,17 @@ class Main {
             let key = Memory.peek(24576);
 
             if (key = 130) {
-                do shipGame.moveLeft();
-                
-                while (Memory.peek(24576) = 130) {}
+                while (~(key = 0)) {
+                    let key = Keyboard.keyPressed();
+                    do shipGame.moveLeft();
+                }
             }
 
             if (key = 132) {
-                do shipGame.moveRight();
-                
-                while (Memory.peek(24576) = 132) {}
+                while (~(key = 0)) {
+                    let key = Keyboard.keyPressed();
+                    do shipGame.moveRight();
+                }
             }
         }
 
