@@ -1,0 +1,164 @@
+class SpaceShip{
+    
+    function void draw(int location) {
+        var int memAddress; 
+        let memAddress = 16384 + location;
+
+        do Memory.poke(memAddress, -4096);
+        do Memory.poke(memAddress + 32, -2048);
+        do Memory.poke(memAddress + 64, -1024);
+        do Memory.poke(memAddress + 96, -1024);
+        do Memory.poke(memAddress + 128, 7680);
+        do Memory.poke(memAddress + 160, 7680);
+        do Memory.poke(memAddress + 192, -512);
+        do Memory.poke(memAddress + 224, -512);
+        do Memory.poke(memAddress + 256, -512);
+        do Memory.poke(memAddress + 288, 7808);
+        do Memory.poke(memAddress + 320, 7872);
+        do Memory.poke(memAddress + 352, -288);
+        do Memory.poke(memAddress + 384, -272);
+        do Memory.poke(memAddress + 416, -264);
+        do Memory.poke(memAddress + 448, 7932);
+        do Memory.poke(memAddress + 480, 7742);
+        do Memory.poke(memAddress + 512, -449);
+        do Memory.poke(memAddress + 544, -449);
+        do Memory.poke(memAddress + 576, -449);
+        do Memory.poke(memAddress + 608, 7743);
+        do Memory.poke(memAddress + 640, 7743);
+        do Memory.poke(memAddress + 672, -449);
+        do Memory.poke(memAddress + 704, -463);
+        do Memory.poke(memAddress + 736, -463);
+        do Memory.poke(memAddress + 768, -269);
+        do Memory.poke(memAddress + 800, -257);
+        do Memory.poke(memAddress + 832, -257);
+        do Memory.poke(memAddress + 864, 14591);
+        do Memory.poke(memAddress + 896, 4096);
+        do Memory.poke(memAddress + 928, 126);
+        do Memory.poke(memAddress + 960, 60);
+
+        do Memory.poke(memAddress + 1, 3);
+        do Memory.poke(memAddress + 33, 7);
+        do Memory.poke(memAddress + 65, 15);
+        do Memory.poke(memAddress + 97, 15);
+        do Memory.poke(memAddress + 129, 30);
+        do Memory.poke(memAddress + 161, 30);
+        do Memory.poke(memAddress + 193, 31);
+        do Memory.poke(memAddress + 225, 31);
+        do Memory.poke(memAddress + 257, 31);
+        do Memory.poke(memAddress + 289, 94);
+        do Memory.poke(memAddress + 321, 222);
+        do Memory.poke(memAddress + 353, 479);
+        do Memory.poke(memAddress + 385, 991);
+        do Memory.poke(memAddress + 417, 2015);
+        do Memory.poke(memAddress + 449, 4062);
+        do Memory.poke(memAddress + 481, 7966);
+        do Memory.poke(memAddress + 513, 16159);
+        do Memory.poke(memAddress + 545, 16159);
+        do Memory.poke(memAddress + 577, 16159);
+        do Memory.poke(memAddress + 609, 16158);
+        do Memory.poke(memAddress + 641, 16158);
+        do Memory.poke(memAddress + 673, 16159);
+        do Memory.poke(memAddress + 705, 8991);
+        do Memory.poke(memAddress + 737, 8991);
+        do Memory.poke(memAddress + 769, 13279);
+        do Memory.poke(memAddress + 801, 16351);
+        do Memory.poke(memAddress + 833, 16351);
+        do Memory.poke(memAddress + 865, 16327);
+        do Memory.poke(memAddress + 897, 2);
+        do Memory.poke(memAddress + 929, 8064);
+        do Memory.poke(memAddress + 961, 3840);
+
+        return;
+    }
+
+    function void clear(int location) {
+        var int memAddress; 
+        let memAddress = 16384 + location;
+
+        do Memory.poke(memAddress, 0);
+        do Memory.poke(memAddress + 32, 0);
+        do Memory.poke(memAddress + 64, 0);
+        do Memory.poke(memAddress + 96, 0);
+        do Memory.poke(memAddress + 128, 0);
+        do Memory.poke(memAddress + 160, 0);
+        do Memory.poke(memAddress + 192, 0);
+        do Memory.poke(memAddress + 224, 0);
+        do Memory.poke(memAddress + 256, 0);
+        do Memory.poke(memAddress + 288, 0);
+        do Memory.poke(memAddress + 320, 0);
+        do Memory.poke(memAddress + 352, 0);
+        do Memory.poke(memAddress + 384, 0);
+        do Memory.poke(memAddress + 416, 0);
+        do Memory.poke(memAddress + 448, 0);
+        do Memory.poke(memAddress + 480, 0);
+        do Memory.poke(memAddress + 512, 0);
+        do Memory.poke(memAddress + 544, 0);
+        do Memory.poke(memAddress + 576, 0);
+        do Memory.poke(memAddress + 608, 0);
+        do Memory.poke(memAddress + 640, 0);
+        do Memory.poke(memAddress + 672, 0);
+        do Memory.poke(memAddress + 704, 0);
+        do Memory.poke(memAddress + 736, 0);
+        do Memory.poke(memAddress + 768, 0);
+        do Memory.poke(memAddress + 800, 0);
+        do Memory.poke(memAddress + 832, 0);
+        do Memory.poke(memAddress + 864, 0);
+        do Memory.poke(memAddress + 896, 0);
+        do Memory.poke(memAddress + 928, 0);
+        do Memory.poke(memAddress + 960, 0);
+
+        do Memory.poke(memAddress + 1, 0);
+        do Memory.poke(memAddress + 33, 0);
+        do Memory.poke(memAddress + 65, 0);
+        do Memory.poke(memAddress + 97, 0);
+        do Memory.poke(memAddress + 129, 0);
+        do Memory.poke(memAddress + 161, 0);
+        do Memory.poke(memAddress + 193, 0);
+        do Memory.poke(memAddress + 225, 0);
+        do Memory.poke(memAddress + 257, 0);
+        do Memory.poke(memAddress + 289, 0);
+        do Memory.poke(memAddress + 321, 0);
+        do Memory.poke(memAddress + 353, 0);
+        do Memory.poke(memAddress + 385, 0);
+        do Memory.poke(memAddress + 417, 0);
+        do Memory.poke(memAddress + 449, 0);
+        do Memory.poke(memAddress + 481, 0);
+        do Memory.poke(memAddress + 513, 0);
+        do Memory.poke(memAddress + 545, 0);
+        do Memory.poke(memAddress + 577, 0);
+        do Memory.poke(memAddress + 609, 0);
+        do Memory.poke(memAddress + 641, 0);
+        do Memory.poke(memAddress + 673, 0);
+        do Memory.poke(memAddress + 705, 0);
+        do Memory.poke(memAddress + 737, 0);
+        do Memory.poke(memAddress + 769, 0);
+        do Memory.poke(memAddress + 801, 0);
+        do Memory.poke(memAddress + 833, 0);
+        do Memory.poke(memAddress + 865, 0);
+        do Memory.poke(memAddress + 897, 0);
+        do Memory.poke(memAddress + 929, 0);
+        do Memory.poke(memAddress + 961, 0);
+
+        return;
+    }
+
+    function void moveLeft(int location) {
+        do SpaceShip.clear(location);
+        let location = location - 1;
+
+        do SpaceShip.draw(location);
+        do Sys.wait(10);
+    return;
+    }
+
+    function void moveRight(int location) {
+        do SpaceShip.clear(location);
+        let location = location + 1;
+
+        do SpaceShip.draw(location);
+        do Sys.wait(10);
+
+    return;
+    }
+
+}
