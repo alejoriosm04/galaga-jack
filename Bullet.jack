@@ -24,12 +24,11 @@ class Bullet {
     }
 
     method void move() {
-        if (active) {              
-            do clear();             
+        if (active) {
+            do clear();
             if (y > 0) {
-                let y = y - 1;      
-                do draw();          
-                do Sys.wait(5);    
+                let y = y - 1;
+                do draw();
             } else {
                 let active = false;
             }
@@ -40,6 +39,14 @@ class Bullet {
     method int isActive() {
         return active;
     }
+
+    method void dispose() {
+    if (active) {          // Solo ejecutar si la bala está activa
+        do clear();        // Borrar la bala de la pantalla
+        let active = false; // Marcar la bala como inactiva
+    }
+    return;
+}
         
 	method int getX() {
 		return x;

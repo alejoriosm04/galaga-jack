@@ -4,9 +4,16 @@ class Main {
         var SpaceShip shipGame;
         var char key;
         var Bullet bullet;
+        var Array bullets;
+        var int bulletCount;
+        var int i;
+        var boolean canShoot;
 
         let shipGame = SpaceShip.new(15, 225);
-        
+        let bullets = Array.new(10); 
+        let bulletCount = 0; 
+        let canShoot = true;
+
         while (true) {
             let key = Memory.peek(24576);
 
@@ -25,11 +32,31 @@ class Main {
             }
 
             if (key = 32) {
-                let bullet = Bullet.new(shipGame.getCenterX(), shipGame.getY()-5);
-                while(bullet.isActive()){
-                    do bullet.move(); 
+                if ((bulletCount < 10) & canShoot) {
+                    let bullets[bulletCount] = Bullet.new(shipGame.getCenterX(), shipGame.getY() - 5);
+                    let bulletCount = bulletCount + 1;
+                    let canShoot = false;
+                }
+            } else {
+                let canShoot = true;
+            }
+
+            if (bulletCount > 0) {
+                let i = 0;
+                while (i < bulletCount) {
+                    let bullet = bullets[i];      
+                    if (bullet.isActive()) {      
+                        do bullet.move();        
+                        let i = i + 1;            
+                    } else {
+                        do bullet.dispose();
+                        let bulletCount = bulletCount - 1;
+                        let bullets[i] = bullets[bulletCount];
+                    }
                 }
             }
+
+            do Sys.wait(2);
         }
 
         return;
