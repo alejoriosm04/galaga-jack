@@ -3,9 +3,10 @@ class Main {
     function void main() {
         var SpaceShip shipGame;
         var char key;
+        var Bullet bullet;
 
         let shipGame = SpaceShip.new(15, 225);
-
+        
         while (true) {
             let key = Memory.peek(24576);
 
@@ -20,6 +21,13 @@ class Main {
                 while (~(key = 0)) {
                     let key = Keyboard.keyPressed();
                     do shipGame.moveRight();
+                }
+            }
+
+            if (key = 32) {
+                let bullet = Bullet.new(shipGame.getCenterX(), shipGame.getY()-5);
+                while(bullet.isActive()){
+                    do bullet.move(); 
                 }
             }
         }

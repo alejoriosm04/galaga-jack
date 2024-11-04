@@ -856,3 +856,17 @@ pop temp 0
 label IF_FALSE0
 push constant 0
 return
+function SpaceShip.getY 0
+push argument 0
+pop pointer 0
+push this 1
+return
+function SpaceShip.getCenterX 0
+push argument 0
+pop pointer 0
+push this 0
+push constant 16
+call Math.multiply 2
+push constant 12
+add
+return

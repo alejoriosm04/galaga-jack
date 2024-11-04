@@ -178,4 +178,12 @@ class SpaceShip{
         return;
     }
 
+    method int getY() {
+        return row;
+    }
+
+    method int getCenterX() {
+    return (column * 16) + 12;
+    }
+
 }

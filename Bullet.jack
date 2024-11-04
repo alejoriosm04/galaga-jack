@@ -1,0 +1,50 @@
+class Bullet {
+    field int x, y;
+    field boolean active;
+
+    constructor Bullet new(int posX,int PosY){
+        let x = posX;
+        let y = PosY;
+        let active = true;
+
+        do draw();
+        return this;
+    }
+
+    method void draw() {
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, y, x + 4, y + 4);
+        return;
+    }
+
+    method void clear(){ 
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x, y, x + 4, y + 4);
+        return;
+    }
+
+    method void move() {
+        if (active) {              
+            do clear();             
+            if (y > 0) {
+                let y = y - 1;      
+                do draw();          
+                do Sys.wait(5);    
+            } else {
+                let active = false;
+            }
+        }
+        return;
+    }
+
+    method int isActive() {
+        return active;
+    }
+        
+	method int getX() {
+		return x;
+	}
+    method int getY() {
+		return y;
+	}
+}
