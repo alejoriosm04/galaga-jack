@@ -2,14 +2,16 @@ class Main {
 
     function void main() {
         var SpaceShip shipGame;
-        var char key;
         var Bullet bullet;
         var Array bullets;
+        var Butterfly butterfly;
+        var char key;
         var int bulletCount;
         var int i;
         var boolean canShoot;
 
         let shipGame = SpaceShip.new(15, 225);
+        let butterfly = Butterfly.new(0, 0);
         let bullets = Array.new(10); 
         let bulletCount = 0; 
         let canShoot = true;
@@ -55,8 +57,7 @@ class Main {
                     }
                 }
             }
-
-            do Sys.wait(2);
+            do Sys.wait(1);
         }
 
         return;
