@@ -72,14 +72,14 @@ class Main {
                     if (bullet.isActive()) {      
                         do bullet.move();        
                         let i = i + 1;
-                        if (bullet.getY() > 224){
-                            let temp = bullet.getX() / 16;
-                            if(shipGame.getX()=temp){
-                                return;
+                        if (bullet.getY() > 230){
+                            let temp = (bullet.getX() / 16)-2;
+                            if(temp<shipGame.getX()){
+                                let temp = temp + 4;
+                                if(shipGame.getX()<temp){
+                                    return;
+                                }
                             }
-                            do Output.printInt(temp);
-                            do Output.printInt(11111);
-                            do Output.printInt(shipGame.getX());
                         }
                     } else {
                         do bullet.dispose();

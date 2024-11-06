@@ -39,7 +39,7 @@ class Bullet {
         else{
             if (active) {
                 do clear();
-                if (y < 225) {
+                if (y < 230) {
                     let y = y + 10;
                     do draw();
                 } else {

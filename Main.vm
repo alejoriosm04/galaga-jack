@@ -221,7 +221,7 @@ add
 pop local 8
 push local 1
 call Bullet.getY 1
-push constant 224
+push constant 230
 gt
 if-goto IF_TRUE9
 goto IF_FALSE9
@@ -230,27 +230,31 @@ push local 1
 call Bullet.getX 1
 push constant 16
 call Math.divide 2
+push constant 2
+sub
+pop local 12
+push local 12
+push local 0
+call SpaceShip.getX 1
+lt
+if-goto IF_TRUE10
+goto IF_FALSE10
+label IF_TRUE10
+push local 12
+push constant 4
+add
 pop local 12
 push local 0
 call SpaceShip.getX 1
 push local 12
-eq
-if-goto IF_TRUE10
-goto IF_FALSE10
-label IF_TRUE10
+lt
+if-goto IF_TRUE11
+goto IF_FALSE11
+label IF_TRUE11
 push constant 0
 return
+label IF_FALSE11
 label IF_FALSE10
-push local 12
-call Output.printInt 1
-pop temp 0
-push constant 11111
-call Output.printInt 1
-pop temp 0
-push local 0
-call SpaceShip.getX 1
-call Output.printInt 1
-pop temp 0
 label IF_FALSE9
 goto IF_END8
 label IF_FALSE8
