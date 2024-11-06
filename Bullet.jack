@@ -1,11 +1,12 @@
 class Bullet {
     field int x, y;
-    field boolean active;
+    field boolean active, type;
 
-    constructor Bullet new(int posX,int PosY){
+    constructor Bullet new(int posX,int PosY, boolean typeDirection){
         let x = posX;
         let y = PosY;
         let active = true;
+        let type = typeDirection;
 
         do draw();
         return this;
@@ -24,13 +25,26 @@ class Bullet {
     }
 
     method void move() {
-        if (active) {
-            do clear();
-            if (y > 0) {
-                let y = y - 20;
-                do draw();
-            } else {
-                let active = false;
+        if (type){
+            if (active) {
+                do clear();
+                if (y > 0) {
+                    let y = y - 10;
+                    do draw();
+                } else {
+                    let active = false;
+                }
+            }
+        }
+        else{
+            if (active) {
+                do clear();
+                if (y < 225) {
+                    let y = y + 10;
+                    do draw();
+                } else {
+                    let active = false;
+                }
             }
         }
         return;

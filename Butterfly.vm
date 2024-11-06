@@ -73,9 +73,6 @@ pop this 2
 push pointer 0
 call Butterfly.draw 1
 pop temp 0
-push constant 30
-call Sys.wait 1
-pop temp 0
 push constant 0
 return
 function Butterfly.draw 1
@@ -764,4 +761,18 @@ push constant 0
 call Memory.poke 2
 pop temp 0
 push constant 0
+return
+function Butterfly.getY 0
+push argument 0
+pop pointer 0
+push this 1
+return
+function Butterfly.getCenterX 0
+push argument 0
+pop pointer 0
+push this 0
+push constant 16
+call Math.multiply 2
+push constant 12
+add
 return

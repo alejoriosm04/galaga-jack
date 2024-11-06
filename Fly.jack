@@ -42,7 +42,6 @@ class Fly {
 
         let currentPosition = (row * 32) + column;
         do draw();  // Dibuja en la nueva posición
-        do Sys.wait(30);
         return;
     }
 
@@ -68,7 +67,6 @@ class Fly {
 
         let currentPosition = (row * 32) + column;
         do draw();  // Dibuja en la nueva posición
-        do Sys.wait(60);
         return;
     }
 
@@ -220,5 +218,13 @@ class Fly {
         do clear();
         do Memory.deAlloc(this);
         return;
+    }
+
+    method int getY() {
+        return row;
+    }
+
+    method int getCenterX() {
+    return (column * 16) + 12;
     }
 }

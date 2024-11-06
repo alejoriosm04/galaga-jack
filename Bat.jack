@@ -68,7 +68,6 @@ class Bat {
 
         let currentPosition = (row * 32) + column;
         do draw();  // Dibuja en la nueva posición
-        do Sys.wait(60);
         return;
     }
 
@@ -200,5 +199,13 @@ class Bat {
         do clear();
         do Memory.deAlloc(this);
         return;
+    }
+
+    method int getY() {
+        return row;
+    }
+
+    method int getCenterX() {
+    return (column * 16) + 12;
     }
 }

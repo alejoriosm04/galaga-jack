@@ -1,5 +1,10 @@
 class Main {
-
+    function int mod(int a, int b) {
+        var int result;
+        let result = a - ((a / b) * b);
+        return result;
+    }
+    
     function void main() {
         var SpaceShip shipGame;
         var Bullet bullet;
@@ -11,6 +16,8 @@ class Main {
         var int bulletCount;
         var int i;
         var boolean canShoot;
+        var int randomNum;
+        var int counter;
 
         let shipGame = SpaceShip.new(15, 225);
         let butterfly = Butterfly.new(20, 122);
@@ -22,24 +29,33 @@ class Main {
 
         while (true) {
             let key = Memory.peek(24576);
+            let counter = counter+1;
 
             if (key = 130) {
-                while (~(key = 0)) {
-                    let key = Keyboard.keyPressed();
-                    do shipGame.moveLeft();
-                }
+                let key = Keyboard.keyPressed();
+                do shipGame.moveLeft();
             }
 
             if (key = 132) {
-                while (~(key = 0)) {
-                    let key = Keyboard.keyPressed();
-                    do shipGame.moveRight();
-                }
+                let key = Keyboard.keyPressed();
+                do shipGame.moveRight();
             }
 
             if (key = 32) {
                 if ((bulletCount < 10) & canShoot) {
-                    let bullets[bulletCount] = Bullet.new(shipGame.getCenterX(), shipGame.getY() - 5);
+                    let randomNum = Main.mod(counter,3);
+                    let bullets[bulletCount] = Bullet.new(shipGame.getCenterX(), shipGame.getY() - 5, true);
+                    let bulletCount = bulletCount + 1;
+
+                    if(randomNum=0){
+                        let bullets[bulletCount] = Bullet.new(butterfly.getCenterX(), butterfly.getY() + 30, false);
+                    }
+                    if(randomNum=1){
+                        let bullets[bulletCount] = Bullet.new(bat.getCenterX(), bat.getY() + 30, false);
+                    }
+                    if(randomNum=2){
+                        let bullets[bulletCount] = Bullet.new(fly.getCenterX(), fly.getY() + 30, false);
+                    }
                     let bulletCount = bulletCount + 1;
                     let canShoot = false;
                 }
@@ -54,7 +70,10 @@ class Main {
                     let bullet = bullets[i];      
                     if (bullet.isActive()) {      
                         do bullet.move();        
-                        let i = i + 1;            
+                        let i = i + 1;
+                        if (bullet.getY() > 224){
+                            do Output.printInt(bullet.getX());
+                        }
                     } else {
                         do bullet.dispose();
                         let bulletCount = bulletCount - 1;
@@ -62,11 +81,11 @@ class Main {
                     }
                 }
             }
-            do Sys.wait(1);
             // Mover el murciélago
             do bat.move();
             do fly.move();
             do butterfly.move();
+            do Sys.wait(30);
         }
 
         return;

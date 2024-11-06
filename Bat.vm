@@ -143,9 +143,6 @@ pop this 2
 push pointer 0
 call Bat.draw 1
 pop temp 0
-push constant 60
-call Sys.wait 1
-pop temp 0
 push constant 0
 return
 function Bat.draw 1
@@ -841,4 +838,18 @@ push pointer 0
 call Memory.deAlloc 1
 pop temp 0
 push constant 0
+return
+function Bat.getY 0
+push argument 0
+pop pointer 0
+push this 1
+return
+function Bat.getCenterX 0
+push argument 0
+pop pointer 0
+push this 0
+push constant 16
+call Math.multiply 2
+push constant 12
+add
 return

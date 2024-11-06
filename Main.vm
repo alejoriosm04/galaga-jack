@@ -1,4 +1,15 @@
-function Main.main 10
+function Main.mod 1
+push argument 0
+push argument 0
+push argument 1
+call Math.divide 2
+push argument 1
+call Math.multiply 2
+sub
+pop local 0
+push local 0
+return
+function Main.main 12
 push constant 15
 push constant 225
 call SpaceShip.new 2
@@ -31,26 +42,21 @@ if-goto WHILE_END0
 push constant 24576
 call Memory.peek 1
 pop local 6
+push local 11
+push constant 1
+add
+pop local 11
 push local 6
 push constant 130
 eq
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
-label WHILE_EXP1
-push local 6
-push constant 0
-eq
-not
-not
-if-goto WHILE_END1
 call Keyboard.keyPressed 0
 pop local 6
 push local 0
 call SpaceShip.moveLeft 1
 pop temp 0
-goto WHILE_EXP1
-label WHILE_END1
 label IF_FALSE0
 push local 6
 push constant 132
@@ -58,20 +64,11 @@ eq
 if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
-label WHILE_EXP2
-push local 6
-push constant 0
-eq
-not
-not
-if-goto WHILE_END2
 call Keyboard.keyPressed 0
 pop local 6
 push local 0
 call SpaceShip.moveRight 1
 pop temp 0
-goto WHILE_EXP2
-label WHILE_END2
 label IF_FALSE1
 push local 6
 push constant 32
@@ -87,6 +84,10 @@ and
 if-goto IF_TRUE3
 goto IF_FALSE3
 label IF_TRUE3
+push local 11
+push constant 3
+call Main.mod 2
+pop local 10
 push local 7
 push local 2
 add
@@ -96,11 +97,83 @@ push local 0
 call SpaceShip.getY 1
 push constant 5
 sub
-call Bullet.new 2
+push constant 0
+not
+call Bullet.new 3
 pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
+push local 7
+push constant 1
+add
+pop local 7
+push local 10
+push constant 0
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push local 7
+push local 2
+add
+push local 3
+call Butterfly.getCenterX 1
+push local 3
+call Butterfly.getY 1
+push constant 30
+add
+push constant 0
+call Bullet.new 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+label IF_FALSE4
+push local 10
+push constant 1
+eq
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push local 7
+push local 2
+add
+push local 4
+call Bat.getCenterX 1
+push local 4
+call Bat.getY 1
+push constant 30
+add
+push constant 0
+call Bullet.new 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+label IF_FALSE5
+push local 10
+push constant 2
+eq
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push local 7
+push local 2
+add
+push local 5
+call Fly.getCenterX 1
+push local 5
+call Fly.getY 1
+push constant 30
+add
+push constant 0
+call Bullet.new 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+label IF_FALSE6
 push local 7
 push constant 1
 add
@@ -114,29 +187,20 @@ push constant 0
 not
 pop local 9
 label IF_END2
-push local 4
-call Bat.move 1
-pop temp 0
-push local 5
-call Fly.move 1
-pop temp 0
-push local 3
-call Butterfly.move 1
-pop temp 0
 push local 7
 push constant 0
 gt
-if-goto IF_TRUE4
-goto IF_FALSE4
-label IF_TRUE4
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
 push constant 0
 pop local 8
-label WHILE_EXP3
+label WHILE_EXP1
 push local 8
 push local 7
 lt
 not
-if-goto WHILE_END3
+if-goto WHILE_END1
 push local 8
 push local 2
 add
@@ -145,9 +209,9 @@ push that 0
 pop local 1
 push local 1
 call Bullet.isActive 1
-if-goto IF_TRUE5
-goto IF_FALSE5
-label IF_TRUE5
+if-goto IF_TRUE8
+goto IF_FALSE8
+label IF_TRUE8
 push local 1
 call Bullet.move 1
 pop temp 0
@@ -155,8 +219,20 @@ push local 8
 push constant 1
 add
 pop local 8
-goto IF_END5
-label IF_FALSE5
+push local 1
+call Bullet.getY 1
+push constant 224
+gt
+if-goto IF_TRUE9
+goto IF_FALSE9
+label IF_TRUE9
+push local 1
+call Bullet.getX 1
+call Output.printInt 1
+pop temp 0
+label IF_FALSE9
+goto IF_END8
+label IF_FALSE8
 push local 1
 call Bullet.dispose 1
 pop temp 0
@@ -176,11 +252,20 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-label IF_END5
-goto WHILE_EXP3
-label WHILE_END3
-label IF_FALSE4
-push constant 1
+label IF_END8
+goto WHILE_EXP1
+label WHILE_END1
+label IF_FALSE7
+push local 4
+call Bat.move 1
+pop temp 0
+push local 5
+call Fly.move 1
+pop temp 0
+push local 3
+call Butterfly.move 1
+pop temp 0
+push constant 30
 call Sys.wait 1
 pop temp 0
 goto WHILE_EXP0

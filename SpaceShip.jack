@@ -181,6 +181,9 @@ class SpaceShip{
     method int getY() {
         return row;
     }
+    method int getX() {
+        return column;
+    }
 
     method int getCenterX() {
     return (column * 16) + 12;
