@@ -9,7 +9,7 @@ sub
 pop local 0
 push local 0
 return
-function Main.main 12
+function Main.main 13
 push constant 15
 push constant 225
 call SpaceShip.new 2
@@ -228,6 +228,27 @@ goto IF_FALSE9
 label IF_TRUE9
 push local 1
 call Bullet.getX 1
+push constant 16
+call Math.divide 2
+pop local 12
+push local 0
+call SpaceShip.getX 1
+push local 12
+eq
+if-goto IF_TRUE10
+goto IF_FALSE10
+label IF_TRUE10
+push constant 0
+return
+label IF_FALSE10
+push local 12
+call Output.printInt 1
+pop temp 0
+push constant 11111
+call Output.printInt 1
+pop temp 0
+push local 0
+call SpaceShip.getX 1
 call Output.printInt 1
 pop temp 0
 label IF_FALSE9

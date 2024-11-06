@@ -18,6 +18,7 @@ class Main {
         var boolean canShoot;
         var int randomNum;
         var int counter;
+        var int temp;
 
         let shipGame = SpaceShip.new(15, 225);
         let butterfly = Butterfly.new(20, 122);
@@ -72,7 +73,13 @@ class Main {
                         do bullet.move();        
                         let i = i + 1;
                         if (bullet.getY() > 224){
-                            do Output.printInt(bullet.getX());
+                            let temp = bullet.getX() / 16;
+                            if(shipGame.getX()=temp){
+                                return;
+                            }
+                            do Output.printInt(temp);
+                            do Output.printInt(11111);
+                            do Output.printInt(shipGame.getX());
                         }
                     } else {
                         do bullet.dispose();
