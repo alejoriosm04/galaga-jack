@@ -47,10 +47,6 @@ class Main {
                 let canShoot = true;
             }
 
-            // Mover el murciélago
-            do bat.move();
-            do fly.move();
-            do butterfly.move();
 
             if (bulletCount > 0) {
                 let i = 0;
@@ -67,6 +63,10 @@ class Main {
                 }
             }
             do Sys.wait(1);
+            // Mover el murciélago
+            do bat.move();
+            do fly.move();
+            do butterfly.move();
         }
 
         return;

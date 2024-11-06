@@ -27,7 +27,7 @@ class Bullet {
         if (active) {
             do clear();
             if (y > 0) {
-                let y = y - 1;
+                let y = y - 20;
                 do draw();
             } else {
                 let active = false;
