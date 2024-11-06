@@ -1,0 +1,204 @@
+class Bat {
+    field int column;
+    field int row;
+    field int currentPosition;
+    field int direction;      // 0: horizontal, 1: vertical
+    field boolean movingRight;// true: derecha/abajo, false: izquierda/arriba
+    field int steps;          // Contador de pasos
+    field int maxSteps;       // Pasos máximos en cada dirección
+    field boolean movingDown; // true: abajo, false: arriba
+
+    constructor Bat new(int startColumn, int startRow) {
+        let column = startColumn;
+        let row = startRow;
+        let currentPosition = (row * 32) + column;
+        let direction = 0;    // Comienza horizontal
+        let movingRight = true;
+        let movingDown = true;
+        let steps = 0;
+        let maxSteps = 25;    // Ajusta este valor para la longitud del movimiento
+
+        do draw();
+        return this;
+    }
+
+    method void moveLeftL() {
+        do clear();  // Borra la posición actual
+
+        // Movimiento horizontal
+        if (movingRight) {
+            if (column < 30) {  // Límite derecho (dejando espacio para el ancho del objeto)
+                let column = column + 1;
+            } else {
+                let movingRight = false;  // Cambia dirección al llegar al límite derecho
+            }
+        } else {
+            if (column > 0) {  // Límite izquierdo
+                let column = column - 1;
+            } else {
+                let movingRight = true;  // Cambia dirección al llegar al límite izquierdo
+            }
+        }
+
+        let currentPosition = (row * 32) + column;
+        do draw();  // Dibuja en la nueva posición
+        do Sys.wait(30);
+        return;
+    }
+
+    method void move() {
+        do clear();  // Borra la posición actual
+
+        // Movimiento vertical
+        if (movingDown) {
+            if (row < 112) {  // Límite inferior (dejando espacio para el objeto)
+                let row = row + 16;
+            } else {
+                let movingDown = false;  // Cambia dirección al llegar al límite inferior
+            }
+        } else {
+            if (row > 0) {  // Límite superior
+                let row = row - 16;
+            } else {
+                let movingDown = true;  // Cambia dirección al llegar al límite superior
+            }
+        }
+
+        do moveLeftL();  // Mueve horizontalmente después del movimiento vertical
+
+        let currentPosition = (row * 32) + column;
+        do draw();  // Dibuja en la nueva posición
+        do Sys.wait(60);
+        return;
+    }
+
+    method void draw() {
+        var int memAddress; 
+        let memAddress = 16384+currentPosition;
+        // column 0
+        do Memory.poke(memAddress, 4095);
+        do Memory.poke(memAddress +32, 4094);
+        do Memory.poke(memAddress +64, 4094);
+        do Memory.poke(memAddress +96, 4094);
+        do Memory.poke(memAddress +128, 4094);
+        do Memory.poke(memAddress +160, 12286);
+        do Memory.poke(memAddress +192, 12284);
+        do Memory.poke(memAddress +224, -4100);
+        do Memory.poke(memAddress +256, -4104);
+        do Memory.poke(memAddress +288, -4112);
+        do Memory.poke(memAddress +320, -32);
+        do Memory.poke(memAddress +352, -256);
+        do Memory.poke(memAddress +384, -256);
+        do Memory.poke(memAddress +416, -256);
+        do Memory.poke(memAddress +448, -256);
+        do Memory.poke(memAddress +480, -256);
+        do Memory.poke(memAddress +512, -256);
+        do Memory.poke(memAddress +544, -256);
+        do Memory.poke(memAddress +576, -256);
+        do Memory.poke(memAddress +608, -512);
+        do Memory.poke(memAddress +640, -512);
+        do Memory.poke(memAddress +672, -1024);
+        do Memory.poke(memAddress +704, -1024);
+        do Memory.poke(memAddress +736, -2048);
+        do Memory.poke(memAddress +768, -4096);
+        do Memory.poke(memAddress +800, -4096);
+        do Memory.poke(memAddress +832, -4096);
+        // column 1
+        do Memory.poke(memAddress +1, -32);
+        do Memory.poke(memAddress +33, 32736);
+        do Memory.poke(memAddress +65, 32736);
+        do Memory.poke(memAddress +97, 32736);
+        do Memory.poke(memAddress +129, 32736);
+        do Memory.poke(memAddress +161, 32744);
+        do Memory.poke(memAddress +193, 16360);
+        do Memory.poke(memAddress +225, 16367);
+        do Memory.poke(memAddress +257, 8175);
+        do Memory.poke(memAddress +289, 4079);
+        do Memory.poke(memAddress +321, 2047);
+        do Memory.poke(memAddress +353, 255);
+        do Memory.poke(memAddress +385, 255);
+        do Memory.poke(memAddress +417, 255);
+        do Memory.poke(memAddress +449, 255);
+        do Memory.poke(memAddress +481, 255);
+        do Memory.poke(memAddress +513, 255);
+        do Memory.poke(memAddress +545, 255);
+        do Memory.poke(memAddress +577, 255);
+        do Memory.poke(memAddress +609, 127);
+        do Memory.poke(memAddress +641, 127);
+        do Memory.poke(memAddress +673, 63);
+        do Memory.poke(memAddress +705, 63);
+        do Memory.poke(memAddress +737, 31);
+        do Memory.poke(memAddress +769, 15);
+        do Memory.poke(memAddress +801, 15);
+        do Memory.poke(memAddress +833, 15);
+        return;
+    }
+
+    method void clear() { 
+        var int memAddress; 
+        let memAddress = 16384+currentPosition;
+        // column 0
+        do Memory.poke(memAddress, 0);
+        do Memory.poke(memAddress +32, 0);
+        do Memory.poke(memAddress +64, 0);
+        do Memory.poke(memAddress +96, 0);
+        do Memory.poke(memAddress +128, 0);
+        do Memory.poke(memAddress +160, 0);
+        do Memory.poke(memAddress +192, 0);
+        do Memory.poke(memAddress +224, 0);
+        do Memory.poke(memAddress +256, 0);
+        do Memory.poke(memAddress +288, 0);
+        do Memory.poke(memAddress +320, 0);
+        do Memory.poke(memAddress +352, 0);
+        do Memory.poke(memAddress +384, 0);
+        do Memory.poke(memAddress +416, 0);
+        do Memory.poke(memAddress +448, 0);
+        do Memory.poke(memAddress +480, 0);
+        do Memory.poke(memAddress +512, 0);
+        do Memory.poke(memAddress +544, 0);
+        do Memory.poke(memAddress +576, 0);
+        do Memory.poke(memAddress +608, 0);
+        do Memory.poke(memAddress +640, 0);
+        do Memory.poke(memAddress +672, 0);
+        do Memory.poke(memAddress +704, 0);
+        do Memory.poke(memAddress +736, 0);
+        do Memory.poke(memAddress +768, 0);
+        do Memory.poke(memAddress +800, 0);
+        do Memory.poke(memAddress +832, 0);
+        // column 1
+        do Memory.poke(memAddress +1, 0);
+        do Memory.poke(memAddress +33, 0);
+        do Memory.poke(memAddress +65, 0);
+        do Memory.poke(memAddress +97, 0);
+        do Memory.poke(memAddress +129, 0);
+        do Memory.poke(memAddress +161, 0);
+        do Memory.poke(memAddress +193, 0);
+        do Memory.poke(memAddress +225, 0);
+        do Memory.poke(memAddress +257, 0);
+        do Memory.poke(memAddress +289, 0);
+        do Memory.poke(memAddress +321, 0);
+        do Memory.poke(memAddress +353, 0);
+        do Memory.poke(memAddress +385, 0);
+        do Memory.poke(memAddress +417, 0);
+        do Memory.poke(memAddress +449, 0);
+        do Memory.poke(memAddress +481, 0);
+        do Memory.poke(memAddress +513, 0);
+        do Memory.poke(memAddress +545, 0);
+        do Memory.poke(memAddress +577, 0);
+        do Memory.poke(memAddress +609, 0);
+        do Memory.poke(memAddress +641, 0);
+        do Memory.poke(memAddress +673, 0);
+        do Memory.poke(memAddress +705, 0);
+        do Memory.poke(memAddress +737, 0);
+        do Memory.poke(memAddress +769, 0);
+        do Memory.poke(memAddress +801, 0);
+        do Memory.poke(memAddress +833, 0);
+        return;
+    }
+
+    method void dispose() {
+        do clear();
+        do Memory.deAlloc(this);
+        return;
+    }
+}

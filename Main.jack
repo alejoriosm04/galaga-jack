@@ -5,13 +5,17 @@ class Main {
         var Bullet bullet;
         var Array bullets;
         var Butterfly butterfly;
+        var Bat bat;
+        var Fly fly;
         var char key;
         var int bulletCount;
         var int i;
         var boolean canShoot;
 
         let shipGame = SpaceShip.new(15, 225);
-        let butterfly = Butterfly.new(0, 0);
+        let butterfly = Butterfly.new(20, 122);
+        let bat = Bat.new(15, 30);
+        let fly = Fly.new(5, 0);
         let bullets = Array.new(10); 
         let bulletCount = 0; 
         let canShoot = true;
@@ -42,6 +46,11 @@ class Main {
             } else {
                 let canShoot = true;
             }
+
+            // Mover el murciélago
+            do bat.move();
+            do fly.move();
+            do butterfly.move();
 
             if (bulletCount > 0) {
                 let i = 0;

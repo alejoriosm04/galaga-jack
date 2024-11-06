@@ -3,14 +3,40 @@ class Butterfly {
     field int column;
     field int row;
     field int currentPosition;
+    field boolean movingRight;
 
     constructor Butterfly new(int startColumn, int startRow) {
         let column = startColumn;
+        let movingRight = true;
         let row = startRow;
         let currentPosition = (row * 32) + column;
 
         do draw();
         return this;
+    }
+
+    method void move() {
+        do clear();  // Borra la posición actual
+
+        // Movimiento horizontal
+        if (movingRight) {
+            if (column < 30) {  // Límite derecho (dejando espacio para el objeto)
+                let column = column + 1;  // Mueve a la derecha
+            } else {
+                let movingRight = false;  // Cambia dirección al llegar al borde derecho
+            }
+        } else {
+            if (column > 0) {  // Límite izquierdo
+                let column = column - 1;  // Mueve a la izquierda
+            } else {
+                let movingRight = true;  // Cambia dirección al llegar al borde izquierdo
+            }
+        }
+
+        let currentPosition = (row * 32) + column;
+        do draw();  // Dibuja en la nueva posición
+        do Sys.wait(30);  // Espera un breve periodo para visualizar el movimiento
+        return;
     }
 
     method void draw() {
