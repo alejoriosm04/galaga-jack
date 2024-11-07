@@ -19,6 +19,7 @@ class Main {
         var int randomNum;
         var int counter;
         var int temp;
+        var int score;
 
         let shipGame = SpaceShip.new(15, 225);
         let butterfly = Butterfly.new(20, 122);
@@ -27,6 +28,7 @@ class Main {
         let bullets = Array.new(10); 
         let bulletCount = 0; 
         let canShoot = true;
+        let counter = 0;
 
         while (true) {
             let key = Memory.peek(24576);
@@ -92,6 +94,12 @@ class Main {
             do bat.move();
             do fly.move();
             do butterfly.move();
+            // Display the score
+            do Output.moveCursor(0, 0);
+            do Output.printString("Score: ");
+            do Output.printInt(score);
+            do Output.moveCursor(0, 25);
+            do Output.printString("Galaga Game");
             do Sys.wait(30);
         }
 
